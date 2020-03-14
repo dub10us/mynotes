@@ -15,6 +15,7 @@ function logIn(email, password) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Accept', 'application/json');
+    headers.append('Access-Control-Allow-Origin', '*');
 
     return fetch(`${baseUrl}/user/login`, {
       method: 'POST',
@@ -32,6 +33,7 @@ function refreshCredentials(accessCredentials) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Accept', 'application/json');
+    headers.append('Access-Control-Allow-Origin', '*');
 
     return fetch(`${baseUrl}/accessKey/refresh`, {
       method: 'POST',
@@ -50,6 +52,7 @@ const getBoardList = () => (
       fetch(`${baseUrl}/boards`, {
         headers: {
           'X-Auth-Key': accessKey,
+          'Access-Control-Allow-Origin': '*'
         },
       })
     ))
@@ -62,6 +65,7 @@ const getBoard = boardId => (
       fetch(`${baseUrl}/boards/${boardId}`, {
         headers: {
           'X-Auth-Key': accessKey,
+          'Access-Control-Allow-Origin': '*'
         },
       })
     ))
@@ -77,6 +81,7 @@ const createBoard = name => (
           'X-Auth-Key': accessKey,
           'Content-Type': 'application/json',
           Accept: 'application/json',
+          'Access-Control-Allow-Origin': '*'
         },
         body: JSON.stringify({
           name,
@@ -95,6 +100,7 @@ const updateBoard = ({ id, name }) => (
           'X-Auth-Key': accessKey,
           'Content-Type': 'application/json',
           Accept: 'application/json',
+          'Access-Control-Allow-Origin': '*'
         },
         body: JSON.stringify({
           name,
@@ -113,6 +119,7 @@ const deleteBoard = id => (
           'X-Auth-Key': accessKey,
           'Content-Type': 'application/json',
           Accept: 'application/json',
+          'Access-Control-Allow-Origin': '*'
         },
       })
     ))
@@ -125,6 +132,7 @@ const getBoardNotes = boardId => (
       fetch(`${baseUrl}/boards/${boardId}/notes`, {
         headers: {
           'X-Auth-Key': accessKey,
+          'Access-Control-Allow-Origin': '*'
         },
       })
     ))
@@ -141,6 +149,7 @@ const updateNote = note => (
           'X-Auth-Key': accessKey,
           'Content-Type': 'application/json',
           Accept: 'application/json',
+          'Access-Control-Allow-Origin': '*'
         },
         body: JSON.stringify({
           x: note.x,
@@ -163,6 +172,7 @@ const createNote = (boardId, note) => (
           'X-Auth-Key': accessKey,
           'Content-Type': 'application/json',
           Accept: 'application/json',
+          'Access-Control-Allow-Origin': '*'
         },
         body: JSON.stringify({
           x: note.x,
@@ -185,6 +195,7 @@ const deleteNote = noteId => (
           'X-Auth-Key': accessKey,
           'Content-Type': 'application/json',
           Accept: 'application/json',
+          'Access-Control-Allow-Origin': '*'
         },
       })
     ))
